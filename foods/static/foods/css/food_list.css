@@ -45,7 +45,7 @@
 
 .food_card {
   width: 30vw;
-  height: 26vh;
+  height: 23.3vh;
   margin: 0 1.666vw;
   margin-bottom: 2vh;
   border-radius: 15px;
@@ -69,8 +69,8 @@
 }
 
 .food_img {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   margin-bottom: 0.2rem;
 }
 
