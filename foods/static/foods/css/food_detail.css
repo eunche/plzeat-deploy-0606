@@ -20,12 +20,25 @@
   font-style: normal;
 }
 
+.detail_edit_box {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2rem;
+  padding-right: 2rem;
+}
+
+.detail_edit_box i {
+  color: #ff8100;
+  font-size: 30px;
+}
+
 /* 음식 사진 이미지 */
 .food_img {
   width: 100px;
   height: 100px;
   display: block;
   margin: 1.7rem auto;
+  margin-top: 1rem;
 }
 .back_img {
   width: 50px;

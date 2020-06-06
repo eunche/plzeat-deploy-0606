@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
@@ -85,6 +85,20 @@ class FoodRegisterView(CreateView, mixins.LoggedInOnlyView):
         context = super(FoodRegisterView, self).get_context_data(**kwargs)
         context["my_form"] = context["form"]
         return context
+
+
+def food_update(request, pk):
+    food = foods_model.Food.objects.get(pk=pk)
+    if request.method == "POST":
+        form = forms.FoodRegisterForm(request.POST, instance=food)
+        if form.is_valid():
+            food = form.save()
+            return redirect('foods:list')
+
+    else:
+        form = forms.FoodRegisterForm(instance=food)
+
+    return render(request, 'foods/food_update.html', {'my_form': form})
 
 
 def food_delete(request, pk):
