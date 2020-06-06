@@ -91,8 +91,8 @@ else:
         "default": {
             "ENGINE": "django.db.backends.postgresql",
             "HOST": "aafko2t14ba95z.crne91xydlzi.ap-northeast-2.rds.amazonaws.com",
-            "NAME": "eunchae",
-            "USER": "postgresql",
+            "NAME": "postgresql",
+            "USER": "eunchae",
             "PASSWORD": "gnulion123",
             "PORT": "5432",
         }
