@@ -12,7 +12,13 @@
 
 {% block content %}
 
-
+<select id="sort-select" onchange="location = this.value;">
+    <option class="sort-date" value="/">유통기한 마감일순</option>
+    <option class="sort-quantity" value="?sort=quantity">식자재 잔량순</option>
+    {% if user.is_authenticated %}
+    <option class="sort-mypost" value="?sort=mypost">등록순</option>
+    {% endif %}
+</select>
 <div class="food_list">
     {% for food in foods %}
     <div class="food_card">

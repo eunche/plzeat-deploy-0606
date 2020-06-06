@@ -30,6 +30,20 @@
   }
 }
 
+#sort-select {
+  margin-top: 0.3rem;
+  position: absolute;
+  right: 0.5rem;
+  top: -2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff8100;
+  color: white;
+  font-weight: bold;
+  padding: 0.2rem;
+  font-family: "NanumSquare", sans-serif;
+}
+
 .page_food_list {
   display: float;
   align-items: center;
@@ -37,10 +51,10 @@
 }
 
 .food_list {
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 1rem;
 }
 
 .food_card {

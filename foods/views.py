@@ -17,10 +17,19 @@ def food_list(request):
     if request.user.is_anonymous:
         return redirect(reverse("core:login"))
     page = request.GET.get("page")
-    food_list = foods_model.Food.objects.filter(user=request.user.pk)
+    sort = request.GET.get('sort', '')
+    if sort == 'mypost':  # 등록순
+        food_list = foods_model.Food.objects.filter(user=request.user.pk)
+    elif sort == 'quantity':  # 잔량순
+        food_list = foods_model.Food.objects.filter(
+            user=request.user.pk).order_by('-quantity')
+    else:  # 유통기한 마감일순, 디폴트 정렬
+        food_list = foods_model.Food.objects.filter(
+            user=request.user.pk).order_by('expired_date')
     paginator = Paginator(food_list, 9)
+    print(page)
     foods = paginator.get_page(page)
-    context = {"foods": foods, "paginator": paginator}
+    context = {"foods": foods, "paginator": paginator, 'sort': sort}
     return render(request, "foods/food_list.html", context)
 
 
