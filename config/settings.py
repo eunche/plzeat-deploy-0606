@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rnv$dh2nnp4a(9couvk4ae=ozhrol+aj0$qp^5p5v@4f!-q(j#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  'gnu-plzeat.eba-3we5me5s.ap-northeast-2.elasticbeanstalk.com']
@@ -79,13 +79,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "HOST": "aafko2t14ba95z.crne91xydlzi.ap-northeast-2.rds.amazonaws.com",
+            "NAME": "eunchae",
+            "USER": "postgresql",
+            "PASSWORD": "gnulion123",
+            "PORT": "5432",
+        }
+    }
 
 
 # Password validation
