@@ -5,7 +5,7 @@ from . import models
 class LoginForm(forms.Form):
 
     email = forms.EmailField(
-        initial="test@a.com", widget=forms.TextInput(attrs={"placeholder": "이메일 주소"})
+        widget=forms.TextInput(attrs={"placeholder": "이메일 주소"})
     )
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "비밀번호"})
@@ -19,7 +19,8 @@ class LoginForm(forms.Form):
             if user.check_password(password):
                 return self.cleaned_data
             else:
-                self.add_error("password", forms.ValidationError("비밀번호가 틀렸습니다"))
+                self.add_error(
+                    "password", forms.ValidationError("비밀번호가 틀렸습니다"))
         except models.User.DoesNotExist:
             self.add_error("email", forms.ValidationError("계정이 존재하지 않습니다"))
 
