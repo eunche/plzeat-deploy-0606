@@ -27,7 +27,6 @@ def food_list(request):
         food_list = foods_model.Food.objects.filter(
             user=request.user.pk).order_by('expired_date')
     paginator = Paginator(food_list, 9)
-    print(page)
     foods = paginator.get_page(page)
     context = {"foods": foods, "paginator": paginator, 'sort': sort}
     return render(request, "foods/food_list.html", context)
