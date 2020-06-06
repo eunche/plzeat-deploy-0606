@@ -1,6 +1,6 @@
 myvenv/
 db.sqlite3
-
+core/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
