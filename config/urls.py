@@ -26,8 +26,9 @@ urlpatterns = [
     path("foods/", include("foods.urls", namespace="foods")),
     path("recipies/", include("recipies.urls", namespace="recipies")),
     path("users/", include("users.urls", namespace="users")),
+    url(r"media/(?P<path>.*)$", serve,
+        {"document_root": settings.MEDIA_ROOT, }),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL,
+                      document_root=settings.MEDIA_ROOT)
