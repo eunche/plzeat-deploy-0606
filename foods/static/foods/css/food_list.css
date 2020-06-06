@@ -44,9 +44,9 @@
 }
 
 .food_card {
-  width: 29.33vw;
+  width: 30vw;
   height: 26vh;
-  margin: 0 2vw;
+  margin: 0 1.666vw;
   margin-bottom: 2vh;
   border-radius: 15px;
   padding-top: 0.5rem;
