@@ -92,7 +92,7 @@ else:
             "ENGINE": "django.db.backends.postgresql",
             "HOST": "plzeat.crne91xydlzi.ap-northeast-2.rds.amazonaws.com",
             "NAME": "plzeat",
-            "USER": "postgresql"
+            "USER": "postgresql",
             "PASSWORD": "gnulion123",
             "PORT": "5432",
         }
