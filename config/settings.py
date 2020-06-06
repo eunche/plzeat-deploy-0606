@@ -25,7 +25,8 @@ SECRET_KEY = 'rnv$dh2nnp4a(9couvk4ae=ozhrol+aj0$qp^5p5v@4f!-q(j#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','gnu-plzeat.eba-3we5me5s.ap-northeast-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'gnu-plzeat.eba-3we5me5s.ap-northeast-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -37,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "users.apps.UsersConfig",
+    "recipies.apps.RecipiesConfig",
+    "foods.apps.FoodsConfig",
+    "core.apps.CoreConfig",
+    "bootstrap_datepicker_plus",
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +61,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
@@ -117,4 +124,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    "core/static/",
+    "foods/static/",
+    "recipies/static/",
+    "users/static/",
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+MEDIA_URL = "/media/"
+
+AUTH_USER_MODEL = "users.User"
+
+BOOTSTRAP4 = {
+    "include_jquery": True,
+}

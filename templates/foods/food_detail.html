@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}
+{{food}}
+{% endblock page_title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'foods/css/food_detail.css' %}" type="text/css">
+{% endblock css %}
+
+
+
+{% block content %}
+<div class="content_area">
+    <img class="food_img" src="{{food.photo.url}}" alt="img">
+    <p class="food_name">{{food.name}}</p>
+    <hr class="recipe_hr">
+
+    <div class="food_infobox">
+        <div class="food_quantity_box">
+            <img class="quantity_img" src="{% static 'core/img/quantity.png' %}">
+            <p class="quantity_text">{{food.quantity}}개 남음</p>
+        </div>
+        <div class="food_time_box">
+            <img class="time_img" src="{% static 'core/img/clock.png' %}">
+            <p class="time_text">{{food.count_date}}</p>
+        </div>
+    </div>
+
+    <div class="food_detail_text">
+        {% if how_to_store %}
+        <p class="food_store_title">| 식자재 보관법</p>
+        <div class="food_store_text">
+            <p>{{how_to_store|linebreaks}}</p>
+        </div>
+        <p class="food_trim_title">| 식자재 손질법</p>
+        <div class="food_trim_text">
+            <p>{{how_to_trim|linebreaks}}</p>
+        </div>
+
+        {% endif %}
+        <a href=javascript:history.go(-1)>
+            <img class="back_img" src="{% static 'core/img/back_button.png' %}" alt="img">
+        </a>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block script %}
+
+{% endblock script %}

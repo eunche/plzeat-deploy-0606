@@ -1,0 +1,11 @@
+<div class="bottom_menus">
+    <div class="menu_wrap dot_icon jsDot" onclick="clickDotIcon(event)">
+        <i class="fas fa-ellipsis-h menu_dot jsI"></i>
+    </div>
+    <a href="{% url 'foods:register' %}" class="menu_wrap write_icon jsWrite">
+        <i class="fas fa-pen menu_dot"></i>
+    </a>
+    <a href="{% url 'recipies:recipe_list' user.pk %}" class="menu_wrap how_icon jsHow">
+        <i class="fas fa-utensils menu_dot"></i>
+    </a>
+</div>
