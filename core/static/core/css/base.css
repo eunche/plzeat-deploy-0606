@@ -18,9 +18,18 @@ body a {
 }
 
 input {
+  -webkit-appearance: none;
   border: none;
   border-style: solid;
   border-width: thin;
+}
+
+select {
+  -webkit-appearance: none;
+}
+
+option {
+  -webkit-appearance: none;
 }
 
 input:focus {
