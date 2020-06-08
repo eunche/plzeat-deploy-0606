@@ -14,6 +14,7 @@ def recipe_list(request, pk):
         user_food_list.append(food.name)
     reco_recipe = recipies_model.Recipe.objects.all()
     resulted_reco_recipe = []
+    reco_food_percent = []
     for reco_food in reco_recipe:
         food_list = []
         count = 0
@@ -21,9 +22,16 @@ def recipe_list(request, pk):
         for food in reco_food.food.all():
             count = count + user_food_list.count(food.name)
             reco_food_len = reco_food_len + 1
-        if count/reco_food_len >= 70/100:
+        if count/reco_food_len >= 0:
+            reco_per = int((count/reco_food_len)*100)
+            reco_food_percent.append(reco_per)
             resulted_reco_recipe.append(reco_food.name)
     recipes = reco_recipe.filter(name__in=resulted_reco_recipe)
+    count = 0
+    for recipe in recipes:
+        recipe.percent = reco_food_percent[count]
+        recipe.save()
+        count = count + 1
 
     paginator = Paginator(recipes, 4)
     page_number = request.GET.get("page")

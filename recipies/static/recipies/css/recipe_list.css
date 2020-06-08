@@ -5,9 +5,27 @@
   padding: 20px;
 }
 
+.recipe_big_img {
+  display: inline-block;
+  position: relative;
+}
+
+.recipe_per {
+  position: absolute;
+  top: -3px;
+  right: -45px;
+  z-index: 1000;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 9px;
+  padding: 0.3rem 0.3rem;
+  background-color: #ff7d7d;
+}
+
 .recipe_img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .recipe_card {
@@ -94,11 +112,6 @@
 }
 .recipe_list {
   margin-top: 19px;
-}
-
-.recipe_img {
-  width: 60px;
-  height: 60px;
 }
 
 .text_test {
