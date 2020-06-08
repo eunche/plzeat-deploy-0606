@@ -137,7 +137,7 @@ header {
   padding: 20px;
   padding-right: 30px;
   width: 100vw;
-  height: 15vh;
+  height: 13vh;
   background-color: #ffffef;
 }
 
@@ -226,7 +226,7 @@ paginator
 */
 .paginator {
   position: fixed;
-  bottom: 2vh;
+  bottom: 1.5vh;
   left: 0;
   width: 100vw;
   height: 30px;
