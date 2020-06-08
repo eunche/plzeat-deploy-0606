@@ -186,6 +186,15 @@ li > i {
   line-height: 1.5;
 }
 
+/* 뒤로가기 버튼 */
+.back_img {
+  position: fixed;
+  left: 20px;
+  bottom: 23px;
+  width: 30px;
+  height: 30px;
+}
+
 /* 데스크톱 PC 반응형 디자인 */
 @media screen and (min-width: 500px) {
   /* 메인 레시피 이미지 디자인 */
