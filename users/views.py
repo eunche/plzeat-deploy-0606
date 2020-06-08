@@ -113,3 +113,22 @@ def kakao_callback(request):
     except KakaoException as e:
         messages.error(request, e)
         return redirect(reverse("core:login"))
+
+
+def profile_update(request, pk):
+    user = models.User.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = forms.ProfileUpdateForm(request.POST, instance=user)
+        if form.is_valid():
+            print(form.cleaned_data.get("nickname"))
+            print(form.cleaned_data.get("password"))
+            user.nickname = form.cleaned_data.get("nickname")
+            user.set_password(form.cleaned_data.get("password"))
+            user.save(udt=True)
+            messages.success(request, f"회원정보가 수정되었습니다")
+            return redirect(reverse('core:home'))
+
+    else:
+        form = forms.ProfileUpdateForm(instance=user)
+
+    return render(request, 'users/profile_update.html', {"form": form})

@@ -1,5 +1,6 @@
 from django import forms
 from . import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class LoginForm(forms.Form):
@@ -68,3 +69,35 @@ class SignUpForm(forms.ModelForm):
         user.nickname = listed_email[0]
         user.set_password(password)
         user.save()
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = models.User
+        fields = ("email", "nickname",)
+        widgets = {
+            "email": forms.TextInput(attrs={"placeholder": "이메일", "readonly": "readonly", "class": "update_email"}),
+            "nickname": forms.TextInput(attrs={"placeholder": "닉네임"}),
+        }
+        labels = {
+            'email': _('이메일'),
+            'nickname': _('닉네임'),
+        }
+
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={"placeholder": "비밀번호"}),
+        label='비밀번호',
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={"placeholder": "비밀번호 재확인"}),
+        label="비밀번호 재확인",
+    )
+
+    def clean_password1(self):
+        password = self.cleaned_data.get("password")
+        password1 = self.cleaned_data.get("password1")
+
+        if password != password1:
+            raise forms.ValidationError("비밀번호가 일치하지 않습니다")
+        else:
+            return password

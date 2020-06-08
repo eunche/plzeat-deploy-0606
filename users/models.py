@@ -46,8 +46,11 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-    def save(self, *args, **kwargs):
-        splited = self.email.split("@")
-        splited = splited[0]
-        self.nickname = splited
+    def save(self, udt=True, *args, **kwargs):
+        if udt is True:
+            pass
+        else:
+            splited = self.email.split("@")
+            splited = splited[0]
+            self.nickname = splited
         super().save(*args, **kwargs)

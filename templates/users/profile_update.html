@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+Profile Update
+{% endblock page_title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/users/css/login.css' %}" type="text/css">
+<style>
+    body {
+        background-color: #ffcd7a91;
+    }
+</style>
+{% endblock css %}
+
+
+{% block content %}
+<form class="login_form" method="POST">
+    {% csrf_token %}
+
+    {% if form.none_field_errors %}
+    {% for error in none_field_errors  %}
+    <span class="field_error">{{error}}</span>
+    {% endfor %}
+    {% endif %}
+
+    {% for field in form  %}
+    <div class="input {% if field.errors %}has_error{% endif %}">
+        <span style="font-weight: bold; font-size: 1.1rem">{{field.label}}</span>
+        {{field}}
+        {% if field.errors %}
+        {% for error in field.errors  %}
+        <span class="error">{{error}}</span>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    {% endfor %}
+    <button class="login_btn">회원정보 수정</button>
+
+</form>
+{% endblock content %}
