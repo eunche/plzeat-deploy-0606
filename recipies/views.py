@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.core.paginator import Paginator
 from users import models as users_model
 from . import models as recipies_model
+from django.utils.html import mark_safe
 
 
 def recipe_list(request, pk):
@@ -20,7 +21,7 @@ def recipe_list(request, pk):
         for food in reco_food.food.all():
             count = count + user_food_list.count(food.name)
             reco_food_len = reco_food_len + 1
-        if count == reco_food_len:
+        if count/reco_food_len >= 70/100:
             resulted_reco_recipe.append(reco_food.name)
     recipes = reco_recipe.filter(name__in=resulted_reco_recipe)
 
@@ -38,5 +39,24 @@ def recipe_list(request, pk):
 
 
 def recipe_detail(request, pk):
+    result_foods = []
+    user = users_model.User.objects.get(pk=request.user.pk)
+    user_foods = user.foods.all()
+    user_food_list = []
+    for food in user.foods.all():
+        user_food_list.append(food.name)
+
     recipe = recipies_model.Recipe.objects.get(pk=pk)
-    return render(request, "recipies/recipe_detail.html", {"recipe": recipe})
+    recipe_food_list = []
+    for food in recipe.food.all():
+        recipe_food_list.append(food.name)
+
+    for food in recipe_food_list:
+        if food in user_food_list:
+            result_foods.append(
+                mark_safe(f"<i class='fas fa-check'></i><span>{food}</span>"))
+        else:
+            result_foods.append(
+                mark_safe(f"<i class='fas fa-times ex'></i><span>{food}</span>"))
+
+    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods})

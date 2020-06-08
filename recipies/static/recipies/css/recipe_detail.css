@@ -5,15 +5,21 @@ ul {
 
 li {
   margin-bottom: 0.3rem;
+  display: flex;
 }
 
 li > i {
   margin-right: 0.4rem;
+  width: 5%;
+}
+
+.ex {
+  color: red;
+  font-size: 1.3rem;
 }
 
 .content_area {
   height: 100%;
-  overflow-y: scroll;
 }
 
 .wrapper {
