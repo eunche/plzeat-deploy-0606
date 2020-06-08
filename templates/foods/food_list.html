@@ -11,23 +11,24 @@
 
 
 {% block content %}
+<div class="big_select">
+    <select id="sort-select" onchange="location = this.value;">
 
-<select id="sort-select" onchange="location = this.value;">
-
-    {% if sort == 'mypost'  %}
-    <option class="sort-mypost" value="?sort=mypost" selected>등록순</option>
-    <option class="sort-date" value="?sort">유통기한 마감일순</option>
-    <option class="sort-quantity" value="?sort=quantity">식자재 잔량순</option>
-    {% elif sort == 'quantity' %}
-    <option class="sort-quantity" value="?sort=quantity" selected>식자재 잔량순</option>
-    <option class="sort-mypost" value="?sort=mypost">등록순</option>
-    <option class="sort-date" value="?sort">유통기한 마감일순</option>
-    {% else %}
-    <option class="sort-date" value="?sort" selected>유통기한 마감일순</option>
-    <option class="sort-quantity" value="?sort=quantity">식자재 잔량순</option>
-    <option class="sort-mypost" value="?sort=mypost">등록순</option>
-    {% endif %}
-</select>
+        {% if sort == 'mypost'  %}
+        <option class="sort-mypost" value="?sort=mypost" selected>등록순</option>
+        <option class="sort-date" value="?sort">유통기한 마감일순</option>
+        <option class="sort-quantity" value="?sort=quantity">식자재 잔량순</option>
+        {% elif sort == 'quantity' %}
+        <option class="sort-quantity" value="?sort=quantity" selected>식자재 잔량순</option>
+        <option class="sort-mypost" value="?sort=mypost">등록순</option>
+        <option class="sort-date" value="?sort">유통기한 마감일순</option>
+        {% else %}
+        <option class="sort-date" value="?sort" selected>유통기한 마감일순</option>
+        <option class="sort-quantity" value="?sort=quantity">식자재 잔량순</option>
+        <option class="sort-mypost" value="?sort=mypost">등록순</option>
+        {% endif %}
+    </select>
+</div>
 <div class="food_list">
     {% for food in foods %}
     <div class="food_card">

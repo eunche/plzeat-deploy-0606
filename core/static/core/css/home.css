@@ -61,10 +61,6 @@
   margin-bottom: 0.2rem;
 }
 
-.food_does_not_exist {
-  font-size: 1.3rem;
-}
-
 @media (max-width: 600px) {
   .food_card span {
     font-size: 0.9rem;

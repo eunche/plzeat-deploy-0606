@@ -214,9 +214,9 @@ wrapper
 */
 .wrapper {
   position: relative;
-  top: 15vh;
+  top: 13vh;
   width: 100vw;
-  height: 85vh;
+  height: 87vh;
 }
 
 /*
@@ -326,6 +326,11 @@ bottom_menu
 .jsMoveHow {
   bottom: 1rem;
   right: 5rem;
+}
+
+.food_does_not_exist {
+  font-size: 1.3rem;
+  color: #ff5f5f;
 }
 
 @media (max-width: 600px) {
