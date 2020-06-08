@@ -116,7 +116,14 @@ def kakao_callback(request):
 
 
 def profile_update(request, pk):
-    user = models.User.objects.get(pk=pk)
+    try:
+        user = models.User.objects.get(pk=pk)
+    except models.User.DoesNotExist:
+        messages.error(request, "접근할 수 없습니다")
+        return redirect(reverse('core:home'))
+    if user != request.user:
+        messages.error(request, "접근할 수 없습니다")
+        return redirect(reverse('core:home'))
     if request.method == 'POST':
         form = forms.ProfileUpdateForm(request.POST, instance=user)
         if form.is_valid():
