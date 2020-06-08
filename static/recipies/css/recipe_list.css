@@ -49,3 +49,78 @@
 .card_hide i {
   color: #ff7d7d;
 }
+
+/* 재안형이 마지막으로 추가한 부분 */
+@media screen and (min-width: 676px) {
+  .recipe_card {
+    width: 30vw;
+    height: 28vh;
+    margin: 1.5vw;
+    margin-bottom: 1vx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+  }
+  .recipe_list {
+    display: grid;
+    grid-template-rows: 27.5vh 27.5h;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 0.3%;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .recipe_card {
+    width: 45vw;
+    height: 18vh;
+    margin: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+  }
+  .recipe_list {
+    display: grid;
+    grid-template-rows: 27.5vh 27.5h;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0.3%;
+  }
+}
+.recipe_list {
+  margin-top: 19px;
+}
+
+.recipe_img {
+  width: 60px;
+  height: 60px;
+}
+
+.text_test {
+  display: inline-block;
+  text-align: center;
+  width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
+}
+.recipe_card > h3 {
+  text-align: center;
+}
+.card_hide {
+  padding-right: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+
+.card_hide i {
+  color: #ff7d7d;
+}

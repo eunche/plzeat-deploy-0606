@@ -17,9 +17,9 @@
 
     <a href="{% url 'recipies:recipe_detail' recipe.pk %}">
         <div class="recipe_card">
-            <div class="card_hide">
+            <!-- <div class="card_hide">
                 <i class="fas fa-eye-slash"></i>
-            </div>
+            </div> -->
             <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
             <div class="text_test">{{recipe.name}}</div>
         </div>
