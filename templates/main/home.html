@@ -18,6 +18,7 @@ Home
 </div>
 <div class="big_food_list">
     <div class="food_list">
+        {% if foods %}
         {% for food in foods %}
         <a href="{% url 'foods:food_detail' food.pk %}">
             <div class="food_card">
@@ -28,6 +29,10 @@ Home
             </div>
         </a>
         {% endfor %}
+        {% else %}
+        <span class="food_does_not_exist">아직 등록된 식자재가 없습니다</span>
+        {% endif %}
+
     </div>
 </div>
 {% endblock content %}
