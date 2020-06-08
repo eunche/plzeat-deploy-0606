@@ -11,6 +11,7 @@
 
 
 {% block content %}
+{% if foods %}
 <div class="big_select">
     <select id="sort-select" onchange="location = this.value;">
 
@@ -42,6 +43,11 @@
     </div>
     {% endfor %}
 </div>
+{% else %}
+<div class="big_does_not_exist">
+    <span class="food_does_not_exist">아직 등록된 식자재가 없습니다</span>
+</div>
+{% endif %}
 
 
 {% include "partials/paginator.html" %}

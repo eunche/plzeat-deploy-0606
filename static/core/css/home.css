@@ -57,7 +57,7 @@
 .food_img {
   width: 60px;
   height: 60px;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
 }
 
 @media (max-width: 600px) {

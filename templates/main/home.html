@@ -17,8 +17,8 @@ Home
     <a href="{% url 'foods:list' %}"><i class="fas fa-chevron-circle-down food_more"></i></a>
 </div>
 <div class="big_food_list">
+    {% if foods %}
     <div class="food_list">
-        {% if foods %}
         {% for food in foods %}
         <a href="{% url 'foods:food_detail' food.pk %}">
             <div class="food_card">
@@ -29,11 +29,13 @@ Home
             </div>
         </a>
         {% endfor %}
-        {% else %}
-        <span class="food_does_not_exist">아직 등록된 식자재가 없습니다</span>
-        {% endif %}
 
     </div>
+    {% else %}
+    <div class="big_does_not_exist">
+        <span class="food_does_not_exist">아직 등록된 식자재가 없습니다</span>
+    </div>
+    {% endif %}
 </div>
 {% endblock content %}
 

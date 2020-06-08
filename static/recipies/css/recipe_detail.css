@@ -16,6 +16,11 @@ li > i {
   overflow-y: scroll;
 }
 
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
 /* 본문에 적용되는 폰트 */
 @font-face {
   font-family: "NIXGONM-Vb";
@@ -85,6 +90,7 @@ li > i {
   margin-bottom: 1rem;
   display: inline-block;
   font-weight: bold;
+  text-align: center;
 }
 
 /* 구분선 */
