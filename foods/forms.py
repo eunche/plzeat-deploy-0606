@@ -15,7 +15,7 @@ class FoodRegisterForm(forms.ModelForm):
         widgets = {
             "name": forms.TextInput(attrs={"placeholder": "식자재명"}),
             "expired_date": DatePickerInput(
-                attrs={"placeholder": "유통기한 마감일", "onFocus": "this.blur()"},
+                attrs={"placeholder": "유통기한 마감일"},
                 options={"format": "YYYY-MM-DD"},
             ),
             "quantity": forms.NumberInput(attrs={"placeholder": "갯수"}),
