@@ -82,10 +82,10 @@ def kakao_callback(request):
         profile_json = profile_request.json()
         kakao_account = profile_json.get("kakao_account")
         email = kakao_account.get("email", None)
-        if email is None:
-            raise KakaoException("Please also give me your email")
         properties = profile_json.get("properties")
         nickname = properties.get("nickname")
+        if email is None:
+            email = f"{nickname}@daum_social_login.auth"
         profile_image = properties.get("profile_image")
         try:
             user = models.User.objects.get(email=email)
