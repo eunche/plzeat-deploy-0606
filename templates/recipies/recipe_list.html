@@ -10,6 +10,8 @@
 {% endblock css %}
 
 {% block content %}
+
+{% if paged_recipes %}
 <div class="recipe_list">
     {% for recipe in paged_recipes %}
 
@@ -26,7 +28,11 @@
 
     {% endfor %}
 </div>
-
+{% else %}
+<div class="big_does_not_exist">
+    <span class="food_does_not_exist">추천 가능한 레시피가 없습니다</span>
+</div>
+{% endif %}
 
 {% include "partials/paginator.html" %}
 
