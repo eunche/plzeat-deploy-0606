@@ -190,6 +190,10 @@ hidden_menu
   top: 0;
   right: -400px;
   transition: right 0.5s ease;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .jsClickedHiddenMenu {
@@ -197,18 +201,29 @@ hidden_menu
 }
 
 .menu_top {
+  width: 100%;
   height: 15vh;
   display: flex;
   align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
   padding: 20px 30px;
 }
 
 .power-off {
   font-size: 30px;
   color: #ff9393;
+}
+
+.menu_bottom {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.cog {
+  font-size: 30px;
+  color: #ff8100;
 }
 
 /*
@@ -364,7 +379,7 @@ bottom_menu
 
 @media (max-width: 500px) {
   .hidden_menu {
-    width: 100vw;
+    width: 80vw;
     right: -100vw;
   }
 }
