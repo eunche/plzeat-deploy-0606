@@ -46,6 +46,7 @@
 .food_card span {
   margin-bottom: 0.2rem;
   word-break: break-all;
+  text-align: center;
 }
 
 .food_title {
@@ -57,4 +58,14 @@
   width: 60px;
   height: 60px;
   margin-bottom: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .food_card span {
+    font-size: 0.9rem;
+  }
+
+  .food_title {
+    font-size: 1rem !important;
+  }
 }
