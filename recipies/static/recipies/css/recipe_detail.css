@@ -24,6 +24,7 @@ li > i {
 
 .wrapper {
   width: 95%;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -184,6 +185,29 @@ li > i {
   margin-right: 10px;
   margin-left: 1.5rem;
   line-height: 1.5;
+}
+
+.reco_videos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .reco_videos {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .reco_videos > iframe {
+    margin-right: 1.5rem;
+  }
+}
+
+.reco_videos > iframe {
+  margin-bottom: 1.5rem;
 }
 
 /* 뒤로가기 버튼 */

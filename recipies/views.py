@@ -1,3 +1,4 @@
+from . import my_crawling
 from django.shortcuts import render
 from django.db.models import Count
 from django.core.paginator import Paginator
@@ -67,4 +68,6 @@ def recipe_detail(request, pk):
             result_foods.append(
                 mark_safe(f"<i class='fas fa-times ex'></i><span>{food}</span>"))
 
-    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods})
+    links = my_crawling.gogogo(recipe.name)
+
+    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods, "links": links})
