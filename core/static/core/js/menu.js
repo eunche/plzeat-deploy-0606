@@ -9,7 +9,8 @@ const clickOutside = (event) => {
   if (
     !hiddenMenu.classList.contains("jsClickedHiddenMenu") ||
     event.target.classList.contains("power-off") ||
-    event.target.classList.contains("cog")
+    event.target.classList.contains("cog") ||
+    event.target.classList.contains("menu_middle_menus")
   ) {
     return;
   }
@@ -18,9 +19,11 @@ const clickOutside = (event) => {
     !(
       event.target.classList.contains("hidden_menu") ||
       event.target.classList.contains("menu_top") ||
+      event.target.classList.contains("menu_middle") ||
       event.target.classList.contains("menu_bottom") ||
       event.target.classList.contains("cog") ||
       event.target.classList.contains("jsMenu") ||
+      event.target.classList.contains("menu_middle_menus") ||
       event.target.classList.contains("power-off")
     )
   ) {

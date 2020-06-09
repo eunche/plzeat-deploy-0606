@@ -13,7 +13,6 @@ class Recipe(models.Model):
     recipe_quantity = models.CharField(max_length=100, null=True)
     recipe_time = models.CharField(max_length=100, null=True)
     recipe_level = models.CharField(max_length=100, null=True)
-    percent = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name

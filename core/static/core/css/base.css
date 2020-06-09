@@ -193,7 +193,6 @@ hidden_menu
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .jsClickedHiddenMenu {
@@ -202,7 +201,7 @@ hidden_menu
 
 .menu_top {
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   display: flex;
   align-items: center;
   padding: 20px 30px;
@@ -210,7 +209,29 @@ hidden_menu
 
 .power-off {
   font-size: 30px;
-  color: #ff9393;
+  color: #ff8100;
+}
+
+.menu_middle {
+  width: 100%;
+  height: 72vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.menu_middle_menus {
+  border-bottom: solid thin #ffe5ca;
+  color: #ff8100;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.2rem 0.8rem;
+}
+
+.menu_middle_menus:hover {
+  background-color: #fff4e9;
 }
 
 .menu_bottom {
@@ -218,6 +239,7 @@ hidden_menu
   height: 15vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 20px 30px;
 }
 
