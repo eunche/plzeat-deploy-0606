@@ -88,7 +88,7 @@ def recipe_detail(request, pk):
 
 def recipe_create(request):
     if request.method == 'POST':
-        form = forms.RecipeCreateForm(request.POST)
+        form = forms.RecipeCreateForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = recipies_model.Recipe()
             recipe.name = form.cleaned_data.get('name')
