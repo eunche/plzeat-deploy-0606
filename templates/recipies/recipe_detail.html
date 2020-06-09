@@ -15,6 +15,12 @@ Recommandation
 {% block content %}
 
 <div class="content_area">
+
+    {% if recipe.creator %}
+    <div class="creator_box">
+        <span>By &nbsp;</span><span class="creator"> {{recipe.creator.nickname}}</span>
+    </div>
+    {% endif %}
     <div class="food_img_area">
         <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
     </div>

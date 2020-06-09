@@ -28,6 +28,18 @@ li > i {
   margin: 0 auto;
 }
 
+.creator_box {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.3rem;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.creator {
+  font-weight: bold;
+}
+
 /* 본문에 적용되는 폰트 */
 @font-face {
   font-family: "NIXGONM-Vb";
