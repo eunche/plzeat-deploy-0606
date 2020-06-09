@@ -21,6 +21,8 @@ class Recipe(models.Model):
     recipe_time = models.IntegerField(null=True)
     recipe_level = models.CharField(
         max_length=30, choices=LEVEL_CHOICES, null=True)
+    creator = models.ForeignKey(
+        user_models.User, related_name="creators", on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.name

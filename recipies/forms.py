@@ -16,7 +16,7 @@ class RecipeCreateForm(forms.ModelForm):
         widgets = {
             "name": forms.TextInput(attrs={"placeholder": "레시피명"}),
             "subname": forms.TextInput(attrs={"placeholder": "부제목"}),
-            "how_to_create": forms.Textarea(attrs={"placeholder": "만드는법", "class": "how_to_create"}),
+            "how_to_create": forms.Textarea(attrs={"placeholder": "조리방법을 작성 해 주세요!", "class": "how_to_create"}),
             "recipe_time": forms.NumberInput(attrs={"placeholder": "조리시간(분)", "style": "-webkit-appearance:none;"}),
             "recipe_level": forms.Select()
         }
