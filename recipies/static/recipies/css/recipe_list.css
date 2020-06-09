@@ -14,7 +14,6 @@
   position: absolute;
   top: -3px;
   right: -45px;
-  z-index: 1000;
   font-size: 0.9rem;
   font-weight: bold;
   color: white;
@@ -66,6 +65,10 @@
 
 .card_hide i {
   color: #ff7d7d;
+}
+
+.paginator {
+  bottom: 4vh;
 }
 
 /* 재안형이 마지막으로 추가한 부분 */

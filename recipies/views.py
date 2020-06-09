@@ -40,7 +40,7 @@ def recipe_list(request, pk):
                 user=request.user, recipe=recipe, percent=reco_food_percent[count])
             percent_model.save()
         count = count + 1
-    how_show = 4
+    how_show = 6
     paginator = Paginator(recipes, how_show)
     page_number = request.GET.get("page")
     paged_recipes = paginator.get_page(page_number)
