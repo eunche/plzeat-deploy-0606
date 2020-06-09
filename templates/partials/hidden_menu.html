@@ -6,7 +6,7 @@
         <a href="#" class="menu_middle_menus">나만의 레시피</a>
         <a href="{% url 'recipies:recipe_list' user.pk %}" class="menu_middle_menus">추천 레시피</a>
         <a href="{% url 'foods:register' %}" class="menu_middle_menus">식자재 등록</a>
-        <a href="#" class="menu_middle_menus">레시피 등록</a>
+        <a href="{% url 'recipies:register' %}" class="menu_middle_menus">레시피 등록</a>
     </div>
     <div class="menu_bottom">
         <a href="{% url 'users:logout' %}"><i class="fas fa-power-off power-off"></i></a>

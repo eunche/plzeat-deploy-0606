@@ -4,6 +4,7 @@ from django.db.models import Count
 from django.core.paginator import Paginator
 from users import models as users_model
 from . import models as recipies_model
+from . import forms
 from django.utils.html import mark_safe
 
 
@@ -83,3 +84,12 @@ def recipe_detail(request, pk):
         user=request.user, recipe=recipe)
 
     return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods, "percent": percent.percent})
+
+
+def recipe_create(request):
+    if request.method == 'POST':
+        pass
+    else:
+        form = forms.RecipeCreateForm()
+
+    return render(request, 'recipies/recipe_form.html', {'form': form})
