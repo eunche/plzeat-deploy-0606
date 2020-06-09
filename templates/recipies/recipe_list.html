@@ -18,7 +18,7 @@
     <a href="{% url 'recipies:recipe_detail' recipe.pk %}">
         <div class="recipe_card">
             <div class="recipe_big_img">
-                <span class="recipe_per">{{recipe.percent}}%보유</span>
+                <span class="recipe_per per{{forloop.counter0}}"></span>
                 <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
             </div>
             <div class="text_test">{{recipe.name}}</div>
@@ -40,5 +40,29 @@
 
 
 {% block script %}
+<script>
+    const per = document.querySelectorAll(".recipe_per");
 
+    function replaceAll(str, searchStr, replaceStr) {
+        return str.split(searchStr).join(replaceStr);
+    }
+
+
+    let list = "{{percent}}"
+    list = list.replace("[", "");
+    list = list.replace("]", "");
+    list = replaceAll(list, " ", "");
+    list = list.split(',');
+    console.log(list);
+
+    console.log({{ how_show }});
+    console.log({{ page_number }});
+    let count = ({{ page_number }}-1)* {{ how_show }};
+    for (const x of per) {
+        console.log(x)
+        x.innerHTML = list[count] + "%보유";
+        count += 1;
+    }
+
+</script>
 {% endblock script %}

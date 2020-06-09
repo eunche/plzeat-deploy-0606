@@ -26,4 +26,5 @@ def gogogo(recipe_name):
         count = count + 1
         if count == 5:
             break
+    print(real_result)
     return real_result

@@ -30,11 +30,18 @@ def recipe_list(request, pk):
     recipes = reco_recipe.filter(name__in=resulted_reco_recipe)
     count = 0
     for recipe in recipes:
-        recipe.percent = reco_food_percent[count]
-        recipe.save()
+        try:
+            percent_model = recipies_model.RecipePercent.objects.get(
+                user=request.user, recipe=recipe)
+            percent_model.percent = reco_food_percent[count]
+            percent_model.save()
+        except recipies_model.RecipePercent.DoesNotExist:
+            percent_model = recipies_model.RecipePercent.objects.create(
+                user=request.user, recipe=recipe, percent=reco_food_percent[count])
+            percent_model.save()
         count = count + 1
-
-    paginator = Paginator(recipes, 4)
+    how_show = 4
+    paginator = Paginator(recipes, how_show)
     page_number = request.GET.get("page")
     paged_recipes = paginator.get_page(page_number)
 
@@ -43,6 +50,10 @@ def recipe_list(request, pk):
         "recipes": recipes,
         "paged_recipes": paged_recipes,
         "paginator": paginator,
+        "page_number": page_number,
+        "how_show": how_show,
+        "percent": reco_food_percent,
+        "percent_list_len": len(reco_food_percent)
     }
     return render(request, "recipies/recipe_list.html", context)
 
@@ -68,6 +79,4 @@ def recipe_detail(request, pk):
             result_foods.append(
                 mark_safe(f"<i class='fas fa-times ex'></i><span>{food}</span>"))
 
-    links = my_crawling.gogogo(recipe.name)
-
-    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods, "links": links})
+    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods})
