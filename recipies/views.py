@@ -79,4 +79,7 @@ def recipe_detail(request, pk):
             result_foods.append(
                 mark_safe(f"<i class='fas fa-times ex'></i><span>{food}</span>"))
 
-    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods})
+    percent = recipies_model.RecipePercent.objects.get(
+        user=request.user, recipe=recipe)
+
+    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods, "percent": percent.percent})
