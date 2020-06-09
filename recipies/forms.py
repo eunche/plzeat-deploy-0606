@@ -20,3 +20,6 @@ class RecipeCreateForm(forms.ModelForm):
             "recipe_time": forms.NumberInput(attrs={"placeholder": "조리시간(분)", "style": "-webkit-appearance:none;"}),
             "recipe_level": forms.Select()
         }
+    need_food = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "필요 식자재"}),
+    )
