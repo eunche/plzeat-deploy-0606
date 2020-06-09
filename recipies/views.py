@@ -90,7 +90,24 @@ def recipe_create(request):
     if request.method == 'POST':
         form = forms.RecipeCreateForm(request.POST)
         if form.is_valid():
-            form.save()
+            recipe = recipies_model.Recipe()
+            recipe.name = form.cleaned_data.get('name')
+            recipe.photo = form.cleaned_data.get('photo')
+            recipe.how_to_create = form.cleaned_data.get('how_to_create')
+            recipe.recipe_quantity = form.cleaned_data.get('recipe_quantity')
+            recipe.recipe_time = form.cleaned_data.get('recipe_time')
+            recipe.recipe_level = form.cleaned_data.get('recipe_level')
+            recipe.save()
+
+            need_food = request.POST.getlist('need_food')
+
+            for food in need_food:
+                new_food = recipies_model.FoodInRecipe(
+                    name=food, recipe=recipe)
+                new_food.save()
+            print(form.cleaned_data)
+            print(request.POST)
+            print(request.POST.getlist('need_food'))
     else:
         form = forms.RecipeCreateForm()
 

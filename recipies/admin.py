@@ -12,10 +12,14 @@ class PercentInline(admin.TabularInline):
     model = models.RecipePercent
 
 
+class FoodInline(admin.TabularInline):
+    model = models.FoodInRecipe
+
+
 @admin.register(models.Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    filter_horizontal = ("food",)
     inlines = [
+        FoodInline,
         LinkInline,
         PercentInline,
     ]

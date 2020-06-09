@@ -138,7 +138,7 @@
         width: 90% !important;
     }
 
-    input[name='need_food'] {
+    .please_input {
         width: 100% !important;
     }
 
@@ -162,6 +162,10 @@
         justify-content: flex-start !important;
         font-size: 2.2rem;
         color: #ff8100;
+    }
+
+    .need_plus i:hover {
+        cursor: pointer;
     }
 </style>
 {% endblock css %}
@@ -220,16 +224,17 @@
         {% elif field.name == 'need_food' %}
         <div class="input need_food_big">
             <div class="input need_food jsNeed">
-                <input type="text" name="need_food" placeholder="필요 식자재" required id="id_need_food">
+                <input class="please_input" type="text" name="need_food" placeholder="필요 식자재" required
+                    id="id_need_food">
             </div>
             <div class="input need_food">
-                <input type="text" name="need_food" placeholder="필요 식자재" required id="id_need_food">
+                <input class="please_input" type="text" name="need_food" placeholder="필요 식자재">
             </div>
             <div class="input need_food">
-                <input type="text" name="need_food" placeholder="필요 식자재" required id="id_need_food">
+                <input class="please_input" type="text" name="need_food" placeholder="필요 식자재">
             </div>
             <div class="input need_food">
-                <input type="text" name="need_food" placeholder="필요 식자재" required id="id_need_food">
+                <input class="please_input" type="text" name="need_food" placeholder="필요 식자재">
             </div>
             <div class="input need_food need_plus">
                 <i class="fas fa-plus-square jsNeedPlus"></i>
@@ -245,7 +250,7 @@
         {% endif %}
     </div>
     {% endfor %}
-    <button class="login_btn">레시피 등록</button>
+    <button class="login_btn jsSubmit">레시피 등록</button>
 </form>
 {% endblock content %}
 

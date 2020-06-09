@@ -63,6 +63,7 @@ class FoodRegisterView(CreateView, mixins.LoggedInOnlyView):
     context_object_name = "my_form"
 
     def form_valid(self, form):
+        print(form.cleaned_data)
         food = form.save(commit=False)
         my_food = foods_model.Food.objects.filter(user=self.request.user.pk)
         filtered_food = my_food.filter(name=food.name)
