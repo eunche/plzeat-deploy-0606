@@ -10,7 +10,7 @@ const clickedPlusIcon = (event) => {
     "beforebegin",
     `
     <div class="input need_food">
-        <input class="please_input" type="text" name="need_food" placeholder="필요 식자재">
+        <input class="please_input" type="text" name="need_food" placeholder="식자재">
     </div>
   `
   );

@@ -21,5 +21,5 @@ class RecipeCreateForm(forms.ModelForm):
             "recipe_level": forms.Select()
         }
     need_food = forms.CharField(
-        widget=forms.TextInput(attrs={"placeholder": "필요 식자재"}),
+        widget=forms.TextInput(attrs={"placeholder": "식자재"}),
     )
