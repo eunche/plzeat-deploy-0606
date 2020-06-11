@@ -24,7 +24,20 @@ li > i {
 
 .wrapper {
   width: 95%;
+  height: auto;
   margin: 0 auto;
+}
+
+.creator_box {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.3rem;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.creator {
+  font-weight: bold;
 }
 
 /* 본문에 적용되는 폰트 */
@@ -184,6 +197,38 @@ li > i {
   margin-right: 10px;
   margin-left: 1.5rem;
   line-height: 1.5;
+}
+
+.reco_videos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .reco_videos {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .reco_videos > iframe {
+    margin-right: 1.5rem;
+  }
+}
+
+.reco_videos > iframe {
+  margin-bottom: 1.5rem;
+}
+
+/* 뒤로가기 버튼 */
+.back_img {
+  position: fixed;
+  left: 20px;
+  bottom: 23px;
+  width: 30px;
+  height: 30px;
 }
 
 /* 데스크톱 PC 반응형 디자인 */

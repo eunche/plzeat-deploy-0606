@@ -41,6 +41,10 @@
   font-family: "NanumSquare", sans-serif;
 }
 
+#sort-select:focus {
+  outline: none;
+}
+
 .page_food_list {
   display: float;
   align-items: center;
