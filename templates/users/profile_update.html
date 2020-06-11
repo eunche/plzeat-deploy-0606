@@ -32,12 +32,53 @@ Profile Update
         justify-content: center;
         align-items: center;
         padding: 0.5rem;
-        padding-bottom: 1.5rem;
+        padding-bottom: 1.3rem;
     }
 
     .profile_avatar {
-        width: 50%;
+        border-radius: 50%;
+        width: 10rem;
+        height: 10rem;
     }
+
+    #id_avatar {
+        border: none;
+    }
+
+    input #file-upload-button {
+        background-color: red;
+    }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        padding: 0 0.5rem;
+    }
+
+    .avatar-update-btn {
+        border: none;
+        border-radius: 5px;
+        background-color: #ff3b3b;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        font-family: "NanumSquare", sans-serif;
+    }
+
+    #id_avatar:hover {
+        cursor: pointer;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
 
     @media (min-width: 500px) {
         .wrapper {
@@ -68,7 +109,10 @@ Profile Update
             <div class="update_img_box">
                 <img class="profile_avatar" src="{{user.avatar.url}}" id="image_section" alt="avatar" />
             </div>
-            <input type="file" name="avatar" accept="image/*" id="id_avatar">
+            <div class="upload-btn-wrapper">
+                <input type="file" name="avatar" accept="image/*" id="id_avatar">
+                <button class="avatar-update-btn">이미지 변경</button>
+            </div>
         </div>
         {% else %}
         <span style="font-weight: bold; font-size: 1.1rem">{{field.label}}</span>
