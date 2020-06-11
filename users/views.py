@@ -101,7 +101,7 @@ def kakao_callback(request):
                 email_verified=True,
             )
             user.set_unusable_password()
-            user.save(udt=True)
+            user.save()
             # if profile_image is not None:
             #     photo_request = requests.get(profile_image)
             #     user.avatar.save(
