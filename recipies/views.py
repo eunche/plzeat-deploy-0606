@@ -1,5 +1,5 @@
 from . import my_crawling
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.db.models import Count
 from django.core.paginator import Paginator
 from users import models as users_model
@@ -118,13 +118,28 @@ def recipe_update(request, pk):
     infoods = []
     for food in recipe.foods.all():
         infoods.append(food.name)
-    print(infoods)
     if request.method == 'POST':
         form = forms.RecipeCreateForm(
             request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            recipe.name = form.cleaned_data.get('name')
+            recipe.photo = form.cleaned_data.get('photo')
+            recipe.how_to_create = form.cleaned_data.get('how_to_create')
+            recipe.recipe_quantity = form.cleaned_data.get('recipe_quantity')
+            recipe.recipe_time = form.cleaned_data.get('recipe_time')
+            recipe.recipe_level = form.cleaned_data.get('recipe_level')
+            recipe.save()
+
+            recipe.foods.all().delete()
+
+            need_food = request.POST.getlist('need_food')
+
+            for food in need_food:
+                new_food = recipies_model.FoodInRecipe(
+                    name=food, recipe=recipe)
+                new_food.save()
 
         return redirect(reverse('recipies:recipe_detail', kwargs={'pk': pk}))
-        pass
     else:
         form = forms.RecipeCreateForm(instance=recipe)
 
