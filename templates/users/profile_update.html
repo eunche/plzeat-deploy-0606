@@ -12,12 +12,39 @@ Profile Update
         background-color: #ffcd7a91;
     }
 
+    .wrapper {
+        padding-top: 0;
+        position: relative;
+        top: 5vh;
+        height: 80vh;
+    }
+
     .menu_middle_menus {
         font-size: 1.8rem;
     }
 
     i {
         font-size: 2rem !important;
+    }
+
+    .update_img_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .profile_avatar {
+        width: 50%;
+    }
+
+    @media (min-width: 500px) {
+        .wrapper {
+            height: 95vh;
+            top: 15vh;
+            padding-top: 1.5rem;
+        }
     }
 </style>
 {% endblock css %}
@@ -35,8 +62,19 @@ Profile Update
 
     {% for field in form  %}
     <div class="input {% if field.errors %}has_error{% endif %}">
+
+        {% if field.name == 'avatar'  %}
+        <div class="input ">
+            <div class="update_img_box">
+                <img class="profile_avatar" src="{{user.avatar.url}}" id="image_section" alt="avatar" />
+            </div>
+            <input type="file" name="avatar" accept="image/*" id="id_avatar">
+        </div>
+        {% else %}
         <span style="font-weight: bold; font-size: 1.1rem">{{field.label}}</span>
         {{field}}
+        {% endif %}
+
         {% if field.errors %}
         {% for error in field.errors  %}
         <span class="error">{{error}}</span>
@@ -49,3 +87,7 @@ Profile Update
 
 </form>
 {% endblock content %}
+
+{% block script %}
+<script src="{% static 'users/js/image_preview.js' %}"></script>
+{% endblock script %}
