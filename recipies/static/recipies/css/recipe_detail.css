@@ -36,6 +36,13 @@ li > i {
   font-size: 1.2rem;
 }
 
+.creator_big {
+  padding: 0.3rem;
+  border-radius: 8px;
+  background-color: #ffbb75;
+  color: white;
+}
+
 .creator {
   font-weight: bold;
 }

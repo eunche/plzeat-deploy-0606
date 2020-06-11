@@ -18,7 +18,9 @@ Recommandation
 
     {% if recipe.creator %}
     <div class="creator_box">
-        <span>By &nbsp;</span><span class="creator"> {{recipe.creator.nickname}}</span>
+        <div class="creator_big">
+            <span>By </span><span class="creator"> {{recipe.creator.nickname}}</span>
+        </div>
     </div>
     {% endif %}
     <div class="food_img_area">
