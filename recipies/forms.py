@@ -6,8 +6,8 @@ class RecipeCreateForm(forms.ModelForm):
     class Meta:
         model = models.Recipe
         fields = (
-            "name",
             "photo",
+            "name",
             "how_to_create",
             "recipe_quantity",
             "recipe_time",

@@ -112,6 +112,25 @@ def recipe_create(request):
     return render(request, 'recipies/recipe_form.html', {'form': form})
 
 
+def recipe_update(request, pk):
+    recipe = recipies_model.Recipe.objects.get(pk=pk)
+    infood_counts = recipe.foods.all().count()
+    infoods = []
+    for food in recipe.foods.all():
+        infoods.append(food.name)
+    print(infoods)
+    if request.method == 'POST':
+        form = forms.RecipeCreateForm(
+            request.POST, request.FILES, instance=recipe)
+
+        return redirect(reverse('recipies:recipe_detail', kwargs={'pk': pk}))
+        pass
+    else:
+        form = forms.RecipeCreateForm(instance=recipe)
+
+    return render(request, 'recipies/recipe_update.html', {'form': form, "recipe": recipe, "photo_url": recipe.photo.url, 'infoods': infoods, "infood_counts": infood_counts})
+
+
 def my_recipe(request, pk):
     user = users_model.User.objects.get(pk=pk)
     user_foods = user.foods.all()

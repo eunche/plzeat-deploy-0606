@@ -23,6 +23,13 @@ Recommandation
         </div>
     </div>
     {% endif %}
+    {% if recipe.creator == user %}
+    <div class="creator_box">
+        <a href="{% url 'recipies:update' recipe.pk %}"><i class="fas fa-pen-square recipe_update"></i></a>
+    </div>
+    {% endif %}
+
+
     <div class="food_img_area">
         <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
     </div>
