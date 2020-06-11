@@ -106,6 +106,8 @@ def recipe_create(request):
                 new_food = recipies_model.FoodInRecipe(
                     name=food, recipe=recipe)
                 new_food.save()
+            return redirect(reverse('recipies:recipe_list', kwargs={'pk': request.user.pk}))
+
     else:
         form = forms.RecipeCreateForm()
 
@@ -139,7 +141,7 @@ def recipe_update(request, pk):
                     name=food, recipe=recipe)
                 new_food.save()
 
-        return redirect(reverse('recipies:recipe_detail', kwargs={'pk': pk}))
+            return redirect(reverse('recipies:recipe_detail', kwargs={'pk': pk}))
     else:
         form = forms.RecipeCreateForm(instance=recipe)
 
