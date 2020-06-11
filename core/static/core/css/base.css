@@ -31,6 +31,10 @@ textarea {
   -webkit-appearance: none;
 }
 
+textarea {
+  outline: none;
+}
+
 input:focus {
   outline: none !important;
   box-shadow: none !important;
