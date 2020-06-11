@@ -24,11 +24,10 @@ input {
   border-width: thin;
 }
 
-select {
-  -webkit-appearance: none;
-}
-
-option {
+input,
+select,
+option,
+textarea {
   -webkit-appearance: none;
 }
 
