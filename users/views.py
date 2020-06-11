@@ -125,12 +125,14 @@ def profile_update(request, pk):
         messages.error(request, "접근할 수 없습니다")
         return redirect(reverse('core:home'))
     if request.method == 'POST':
-        form = forms.ProfileUpdateForm(request.POST, instance=user)
+        form = forms.ProfileUpdateForm(
+            request.POST, request.FILES, instance=user)
         if form.is_valid():
-            print(form.cleaned_data.get("nickname"))
-            print(form.cleaned_data.get("password"))
+            user.avatar = form.cleaned_data.get("avatar")
             user.nickname = form.cleaned_data.get("nickname")
-            user.set_password(form.cleaned_data.get("password"))
+            print(form.cleaned_data.get("password") == "")
+            if form.cleaned_data.get("password") != "":
+                user.set_password(form.cleaned_data.get("password"))
             user.save(udt=True)
             messages.success(request, f"회원정보가 수정되었습니다")
             return redirect(reverse('core:home'))

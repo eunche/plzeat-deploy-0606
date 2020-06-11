@@ -74,7 +74,7 @@ class SignUpForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = ("email", "nickname",)
+        fields = ("avatar", "email", "nickname",)
         widgets = {
             "email": forms.TextInput(attrs={"placeholder": "이메일", "readonly": "readonly", "class": "update_email"}),
             "nickname": forms.TextInput(attrs={"placeholder": "닉네임"}),
@@ -85,12 +85,16 @@ class ProfileUpdateForm(forms.ModelForm):
         }
 
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "비밀번호"}),
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "비밀번호(선택)"}),
         label='비밀번호',
+        required=False,
     )
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={"placeholder": "비밀번호 재확인"}),
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "비밀번호 재확인(선택)"}),
         label="비밀번호 재확인",
+        required=False,
     )
 
     def clean_password1(self):

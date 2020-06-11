@@ -24,6 +24,8 @@ class User(AbstractUser):
         max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
     )
     email_verified = models.BooleanField(default=True)
+    avatar = models.ImageField(
+        upload_to="avatar", default="avatar_default.png")
 
     def verify_email(self):
         if self.email_verified is False:

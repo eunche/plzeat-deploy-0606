@@ -24,7 +24,7 @@ Profile Update
 
 
 {% block content %}
-<form class="login_form" method="POST">
+<form class="login_form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.none_field_errors %}
