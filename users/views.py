@@ -97,11 +97,12 @@ def kakao_callback(request):
                 email=email,
                 username=email,
                 first_name=nickname,
+                nickname=nickname,
                 login_method=models.User.LOGIN_KAKAO,
                 email_verified=True,
             )
             user.set_unusable_password()
-            user.save(social_login=True, email=email)
+            user.save(social_login=True)
             # if profile_image is not None:
             #     photo_request = requests.get(profile_image)
             #     user.avatar.save(
