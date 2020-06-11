@@ -24,12 +24,15 @@ input {
   border-width: thin;
 }
 
-select {
+input,
+select,
+option,
+textarea {
   -webkit-appearance: none;
 }
 
-option {
-  -webkit-appearance: none;
+textarea {
+  outline: none;
 }
 
 input:focus {
