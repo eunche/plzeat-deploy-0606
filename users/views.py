@@ -52,7 +52,7 @@ def complete_verification(request, key):
 #### 소셜 로그인 ####
 def kakao_login(request):
     client_id = "e72f124e5a2a725a6aee644df5be6a83"
-    redirect_uri = "http://plzeat-demo2.eba-ytmtwqdh.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
+    redirect_uri = "plzeat-demo3.eba-ytmtwqdh.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
     )
@@ -66,7 +66,7 @@ def kakao_callback(request):
     try:
         code = request.GET.get("code")
         client_id = "e72f124e5a2a725a6aee644df5be6a83"
-        redirect_uri = "http://plzeat-demo2.eba-ytmtwqdh.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
+        redirect_uri = "plzeat-demo3.eba-ytmtwqdh.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
         token_request = requests.get(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
         )
