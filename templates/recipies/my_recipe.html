@@ -7,6 +7,21 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'recipies/css/recipe_list.css' %}" type="text/css">
+<style>
+    .recipe_card{
+    }
+    .card_xbox {
+        margin-top:0.4rem;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.4rem;
+    }
+
+    .card_xbox i {
+        color: #ff7d7d;
+    }
+</style>
 {% endblock css %}
 
 {% block content %}
@@ -17,6 +32,9 @@
 
     <a href="{% url 'recipies:recipe_detail' recipe.pk %}">
         <div class="recipe_card">
+            <div class="card_xbox">
+                <i class="fas fa-minus-circle"></i>
+            </div>
             <div class="recipe_big_img">
                 <span class="recipe_per per{{forloop.counter0}}"></span>
                 <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
