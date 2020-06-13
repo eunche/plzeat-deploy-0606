@@ -21,6 +21,9 @@ def recipe_list(request, pk):
         food_list = []
         count = 0
         reco_food_len = 0
+        print(reco_food)
+        print(reco_food.foods.all())
+        print(user_food_list)
         for food in reco_food.foods.all():
             count = count + user_food_list.count(food.name)
             reco_food_len = reco_food_len + 1

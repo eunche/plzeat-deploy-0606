@@ -12,6 +12,9 @@ def gogogo(recipe_name):
         soup = BeautifulSoup(response, 'html.parser')
         links = []
         result_links = []
+        no_have_result = soup.select(".search-message")
+        if(no_have_result != []):
+            return ""
         for anchor in soup.find_all('a'):
             if 'watch?v' in anchor.get('href', '/'):
                 links.append(anchor.get('href', '/'))
