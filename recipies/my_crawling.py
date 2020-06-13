@@ -22,7 +22,10 @@ def gogogo(recipe_name):
                 break
 
         for link in links:
-            result_links.append(link.split('=')[1])
+            if ('list' in link.split('=')[1]):
+                result_links.append("비어있음")
+            else:
+                result_links.append(link.split('=')[1])
         count = 0
         for x in result_links:
             if (count == 0 or count == 2 or count == 4):
