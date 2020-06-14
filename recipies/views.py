@@ -212,3 +212,30 @@ def my_recipe(request, pk):
         "percent_list_len": len(reco_food_percent)
     }
     return render(request, "recipies/my_recipe.html", context)
+
+
+def recipe_worldcup(request):
+    all_recipes = recipies_model.Recipe.objects.all()
+    random_picked_recipes = all_recipes.random(8)
+    count = 0
+
+    for x in random_picked_recipes:
+        if count == 0:
+            r0 = x
+        elif count == 1:
+            r1 = x
+        elif count == 2:
+            r2 = x
+        elif count == 3:
+            r3 = x
+        elif count == 4:
+            r4 = x
+        elif count == 5:
+            r5 = x
+        elif count == 6:
+            r6 = x
+        elif count == 7:
+            r7 = x
+        count = count + 1
+
+    return render(request, 'recipies/recipe_worldcup.html', {"r0": r0, "r1": r1, "r2": r2, "r3": r3, "r4": r4, "r5": r5, "r6": r6, "r7": r7, })

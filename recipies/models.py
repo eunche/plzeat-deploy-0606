@@ -2,6 +2,7 @@ from django.db import models
 from .my_crawling import gogogo
 from users import models as user_models
 from django.utils import timezone
+from django_random_queryset import RandomManager
 
 
 class Recipe(models.Model):
@@ -24,6 +25,7 @@ class Recipe(models.Model):
         max_length=30, choices=LEVEL_CHOICES, null=True)
     creator = models.ForeignKey(
         user_models.User, related_name="creators", on_delete=models.CASCADE, blank=True, null=True)
+    objects = RandomManager()
 
     def total_rating(self):
         total_rating = 0
