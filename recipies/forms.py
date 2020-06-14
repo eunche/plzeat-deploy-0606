@@ -23,3 +23,13 @@ class RecipeCreateForm(forms.ModelForm):
     need_food = forms.CharField(
         widget=forms.TextInput(attrs={"placeholder": "식자재"}),
     )
+
+
+class CommentCreateForm(forms.ModelForm):
+    class Meta:
+        model = models.Comment
+        fields = ("rating", "body")
+        widgets = {
+            "rating": forms.Select(attrs={"class": "comment_select"}),
+            "body": forms.Textarea(attrs={"placeholder": "댓글을 입력해주세요", "class": "comment_textarea"}),
+        }

@@ -7,6 +7,21 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'recipies/css/recipe_list.css' %}" type="text/css">
+<style>
+    .star_img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .total_rating{
+        font-size:0.7rem;
+
+    }
+
+    .text_test{
+        width:200px;
+    }
+</style>
 {% endblock css %}
 
 {% block content %}
@@ -21,7 +36,11 @@
                 <span class="recipe_per per{{forloop.counter0}}"></span>
                 <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
             </div>
-            <div class="text_test">{{recipe.name}}</div>
+            <div class="text_test">
+                {{recipe.name}}
+                <img class="star_img" src="{% static 'recipies/img/star.png' %}"alt="">
+                <span class="total_rating">{{recipe.total_rating}}</span>
+            </div>
         </div>
 
     </a>

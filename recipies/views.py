@@ -86,7 +86,19 @@ def recipe_detail(request, pk):
     percent = recipies_model.RecipePercent.objects.get(
         user=request.user, recipe=recipe)
 
-    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods, "percent": percent.percent})
+    if request.method == 'POST':
+        form = forms.CommentCreateForm(request.POST)
+        if form.is_valid():
+            comment = recipies_model.Comment()
+            comment.user = request.user
+            comment.recipe = recipe
+            comment.rating = form.cleaned_data.get('rating')
+            comment.body = form.cleaned_data.get('body')
+            comment.save()
+    else:
+        form = forms.CommentCreateForm()
+
+    return render(request, "recipies/recipe_detail.html", {"recipe": recipe, "result": result_foods, "percent": percent.percent, "form": form})
 
 
 def recipe_create(request):

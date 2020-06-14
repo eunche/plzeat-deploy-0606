@@ -79,8 +79,38 @@ Recommandation
         {% endif %}
         {% endfor %}
     </div>
+    <div class="one_comment comment_big_box">
+        <div class="left_box" style="margin-top: 1rem;">
+            <img class="left_box__avatar" src="{{user.avatar.url}}" alt="">
+        </div>
+        <div class="right_box right_comment_form_box">
+            <form method='post'>
+                {% csrf_token %}
+
+                {% if form.none_field_errors %}
+                {% for error in none_field_errors  %}
+                <span class="field_error">{{error}}</span>
+                {% endfor %}
+                {% endif %}
+                {% for field in form  %}
+
+                {% if field.name == "rating" %}
+                <div>
+                    <span style="font-size: 0.9rem;"><strong>평점 : </strong></span>
+                    {{field}}
+                    <button
+                        style="background-color:#f0f0f0;border-radius: 8px; font-weight:bold; margin-left: 0.5rem; padding:0.2rem 0.3rem; font-size: 0.9rem; font-family: 'NanumSquare', sans-serif; ">작성</button>
+                </div>
+                {% else %}
+                {{field}}
+                {% endif %}
+
+                {% endfor %}
+            </form>
+        </div>
+    </div>
     <div class="recipe_comments">
-        {% for comment in recipe.comments.all %}
+        {% for comment in recipe.comments.all reversed %}
         <div class="one_comment">
             <div class="left_box">
                 <img class="left_box__avatar" src="{{comment.user.avatar.url}}" alt="">

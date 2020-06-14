@@ -245,6 +245,10 @@ li > i {
   height: 30px;
 }
 
+.recipe_comments {
+  margin-left: 1.5rem;
+}
+
 .one_comment {
   display: flex;
   flex-wrap: wrap;
@@ -300,6 +304,38 @@ li > i {
 }
 
 .right_box__body {
+}
+
+.comment_big_box {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fafafa;
+  padding: 0.5rem 3rem 0.5rem 0.5rem;
+}
+.right_comment_form_box {
+  border: none;
+}
+
+.comment_select {
+  border-radius: 5px;
+  border-color: #dbdbdb;
+  padding: 0.2rem 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment_select:focus {
+  outline: none;
+}
+
+.comment_textarea {
+  resize: none;
+  width: 100%;
+  height: 50px;
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  border-color: #dbdbdb;
+  font-family: "NanumSquare", sans-serif;
+  overflow: hidden;
 }
 
 /* 데스크톱 PC 반응형 디자인 */

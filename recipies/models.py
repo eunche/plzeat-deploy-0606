@@ -25,6 +25,16 @@ class Recipe(models.Model):
     creator = models.ForeignKey(
         user_models.User, related_name="creators", on_delete=models.CASCADE, blank=True, null=True)
 
+    def total_rating(self):
+        total_rating = 0
+        for rating in self.comments.all():
+            total_rating = total_rating + int(rating.rating)
+        try:
+            total_rating = total_rating/self.comments.count()
+            return round(total_rating, 2)
+        except ZeroDivisionError:
+            return 0
+
     def __str__(self):
         return self.name
 
@@ -69,24 +79,25 @@ class RecipePercent(models.Model):
 
 
 class Comment(models.Model):
-    STAR1 = "★"
-    STAR2 = "★★"
-    STAR3 = "★★★"
-    STAR4 = "★★★★"
-    STAR5 = "★★★★★"
+    STA1 = 1
+    STA2 = 2
+    STA3 = 3
+    STA4 = 4
+    STA5 = 5
     STAR_CHOICES = (
-        (STAR1, 1),
-        (STAR2, 2),
-        (STAR3, 3),
-        (STAR4, 4),
-        (STAR5, 5),
+        ("1", 1),
+        ("2", 2),
+        ("3", 3),
+        ("4", 4),
+        ("5", 5),
     )
     user = models.ForeignKey(
         user_models.User, related_name="comments", on_delete=models.CASCADE)
     recipe = models.ForeignKey(
         "Recipe", related_name="comments", on_delete=models.CASCADE)
-    create_time = models.DateField(auto_now=False)
-    rating = models.CharField(max_length=10, choices=STAR_CHOICES, default=5)
+    create_time = models.DateField(auto_now=True)
+    rating = models.CharField(
+        max_length=10, choices=STAR_CHOICES, default=5)
     body = models.TextField(max_length=100)
 
     def time_turm(self):
