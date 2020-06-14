@@ -3,6 +3,9 @@ let rightBox = document.querySelector(".jsRF");
 const leftPK = document.querySelector(".jsLFPK").innerHTML;
 const rightPK = document.querySelector(".jsRFPK").innerHTML;
 const gijun = document.querySelector(".left_box");
+const final_box = document.querySelector(".div_container_flex");
+const final_gijun = document.querySelector(".div_container");
+const worldcup_title = document.querySelector(".worldcup_title");
 
 const checkWho = (pk, setValue) => {
   if (count < 4) {
@@ -92,6 +95,11 @@ const deleteRecipe = () => {
   rightBox.childNodes[1].remove();
   rightBox.childNodes[2].remove();
   rightBox.childNodes[3].remove();
+
+  if (count == 6) {
+    final_box.remove();
+    worldcup_title.remove();
+  }
 };
 
 const addNewRecipe = (count) => {
@@ -198,13 +206,15 @@ const addNewRecipe = (count) => {
             `
     );
   } else if (count == 6) {
-    leftBox.insertAdjacentHTML(
+    final_gijun.insertAdjacentHTML(
       "afterbegin",
-      `
-            <img class="food_image" src="${final_url}" alt="recipe">
-            <p class="food_name">${final_name}</p>
-            <span class="jsLFPK" style="opacity: 0;">${final_pk}</span>
-          `
+      `<a href="/recipies/detail/${final_pk}/" style="display:flex; flex-direction:column; align-items:center; justify-contents:center;">
+            <span style="font-size:4em;font-weight:bold;">우승!</span>
+            <h3>클릭해서 레시피를 확인하세요!</h3>
+            <img style="width:250px; height:250px;"class="food_image" src="${final_url}" alt="recipe">
+            <h1 class="food_name">${final_name}</h1>
+        </a>
+        `
     );
   }
 };

@@ -12,21 +12,24 @@ Recipe Worldcup
 
 {% block content %}
 <div class="div_container">
-    <div class="div_container_flex">
-        <div class="left_box"></div>
-        <div class="food_content jsLF">
-            <img class="food_image" src="{{r0.photo.url}}" alt="recipe">
-            <p class="food_name">{{r0.name}}</p>
-            <span class="jsLFPK" style="opacity: 0;">{{r0.pk}}</span>
-        </div>
-        <div class="food_content jsRF">
-            <img class="food_image" src="{{r1.photo.url}}" alt="recipe">
-            <p class="food_name">{{r1.name}}</p>
-            <span class="jsRFPK" style="opacity: 0;">{{r1.pk}}</span>
-        </div>
-        <div class="right_box"></div>
-        <div class="vs_img">
-            <img src="{% static 'core/img/vs_logo.png' %}" id="vs_logo_img">
+    <h1 class="worldcup_title" style="text-align: center;height:10vh;">레시피 월드컵 8강</h1>
+    <div style="height:60vh; display:flex;align-items:center; justify-content:center">
+        <div class="div_container_flex">
+            <div class="left_box"></div>
+            <div class="food_content jsLF">
+                <img class="food_image" src="{{r0.photo.url}}" alt="recipe">
+                <p class="food_name">{{r0.name}}</p>
+                <span class="jsLFPK" style="opacity: 0;">{{r0.pk}}</span>
+            </div>
+            <div class="food_content jsRF">
+                <img class="food_image" src="{{r1.photo.url}}" alt="recipe">
+                <p class="food_name">{{r1.name}}</p>
+                <span class="jsRFPK" style="opacity: 0;">{{r1.pk}}</span>
+            </div>
+            <div class="right_box"></div>
+            <div class="vs_img">
+                <img src="{% static 'core/img/vs_logo.png' %}" id="vs_logo_img">
+            </div>
         </div>
     </div>
 </div>
