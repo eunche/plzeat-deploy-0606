@@ -79,6 +79,26 @@ Recommandation
         {% endif %}
         {% endfor %}
     </div>
+    <div class="recipe_comments">
+        {% for comment in recipe.comments.all %}
+        <div class="one_comment">
+            <div class="left_box">
+                <img class="left_box__avatar" src="{{comment.user.avatar.url}}" alt="">
+            </div>
+            <div class="right_box">
+                <div class="right_box__user_rate_time">
+                    <strong><span class="right_box__user">{{comment.user.nickname}}</span></strong>
+                    <span class="right_box__rate"><img class="star_img" src="{% static 'recipies/img/star.png' %}"
+                            alt="">{{comment.get_rating_display}}</span>
+                    <span class="right_box__time">{{comment.time_turm}}</span>
+                </div>
+                <div class="right_box__body">
+                    {{comment.body}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 <a href=javascript:history.go(-1)>
     <img class="back_img" src="{% static 'core/img/back_button.png' %}" alt="img">

@@ -16,12 +16,17 @@ class FoodInline(admin.TabularInline):
     model = models.FoodInRecipe
 
 
+class CommentInline(admin.TabularInline):
+    model = models.Comment
+
+
 @admin.register(models.Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     inlines = [
         FoodInline,
         LinkInline,
         PercentInline,
+        CommentInline,
     ]
 
 
@@ -37,4 +42,9 @@ class RecipeLinkAdmin(admin.ModelAdmin):
 
 @admin.register(models.RecipePercent)
 class RecipePercentAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(models.Comment)
+class CommentAdmin(admin.ModelAdmin):
     pass

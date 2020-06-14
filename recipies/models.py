@@ -1,6 +1,7 @@
 from django.db import models
 from .my_crawling import gogogo
 from users import models as user_models
+from django.utils import timezone
 
 
 class Recipe(models.Model):
@@ -65,3 +66,33 @@ class RecipePercent(models.Model):
     recipe = models.ForeignKey(
         Recipe, related_name="percents", on_delete=models.CASCADE)
     percent = models.IntegerField()
+
+
+class Comment(models.Model):
+    STAR1 = "★"
+    STAR2 = "★★"
+    STAR3 = "★★★"
+    STAR4 = "★★★★"
+    STAR5 = "★★★★★"
+    STAR_CHOICES = (
+        (STAR1, 1),
+        (STAR2, 2),
+        (STAR3, 3),
+        (STAR4, 4),
+        (STAR5, 5),
+    )
+    user = models.ForeignKey(
+        user_models.User, related_name="comments", on_delete=models.CASCADE)
+    recipe = models.ForeignKey(
+        "Recipe", related_name="comments", on_delete=models.CASCADE)
+    create_time = models.DateField(auto_now=False)
+    rating = models.CharField(max_length=10, choices=STAR_CHOICES, default=5)
+    body = models.TextField(max_length=100)
+
+    def time_turm(self):
+        time_turm = timezone.localtime().date() - self.create_time
+        time_turm = time_turm.days
+        if time_turm > 0:
+            return f"{time_turm}일 전"
+        else:
+            return "오늘"
