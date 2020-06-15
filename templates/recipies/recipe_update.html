@@ -329,6 +329,7 @@
 
     const updateDefaultNeedFoods = () => {
         for (const x of infoods) {
+            x = x.replaceAll(infoods, "'", "");
             gijun.insertAdjacentHTML(
                 "beforebegin",
                 `
