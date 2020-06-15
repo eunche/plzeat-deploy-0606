@@ -252,8 +252,7 @@ li > i {
 .one_comment {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 12px;
-  width: 90%;
+  width: 100%;
   margin-bottom: 3rem;
 }
 
@@ -307,10 +306,13 @@ li > i {
 }
 
 .comment_big_box {
+  width: 95%;
   margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 8px;
   background-color: #fafafa;
-  padding: 0.5rem 3rem 0.5rem 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
 }
 .right_comment_form_box {
   border: none;
