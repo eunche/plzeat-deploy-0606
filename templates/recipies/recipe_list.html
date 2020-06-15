@@ -13,13 +13,13 @@
         height: 15px;
     }
 
-    .total_rating{
-        font-size:0.7rem;
+    .total_rating {
+        font-size: 0.7rem;
 
     }
 
-    .text_test{
-        width:200px;
+    .text_test {
+        width: 100%;
     }
 </style>
 {% endblock css %}
@@ -38,7 +38,7 @@
             </div>
             <div class="text_test">
                 {{recipe.name}}
-                <img class="star_img" src="{% static 'recipies/img/star.png' %}"alt="">
+                <img class="star_img" src="{% static 'recipies/img/star.png' %}" alt="">
                 <span class="total_rating">{{recipe.total_rating}}</span>
             </div>
         </div>
@@ -75,9 +75,10 @@
     console.log(list);
     let count = 0;
     try {
-        const page_number = {{ page_number }}
+        const page_number = {{ page_number }
+    }
         const how_show = {{ how_show }};
-        count = (page_number - 1) * how_show;
+    count = (page_number - 1) * how_show;
     }
     catch (err) {
         console.log(err);
