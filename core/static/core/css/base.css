@@ -408,3 +408,9 @@ bottom_menu
     right: -100vw;
   }
 }
+
+@media (max-height: 600px) {
+  .menu_middle_menus {
+    font-size: 1rem;
+  }
+}
