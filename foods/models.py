@@ -4,9 +4,16 @@ from django.utils.html import mark_safe
 from users import models as users_models
 from . import models as foods_models
 from . import my_validator
+import os
+import random
 
 
 # Create your models here.
+def photo_path(instance, filename):
+    basefilename, file_extension = os.path.splitext(filename)
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+    randomstr = ''.join((random.choice(chars)) for x in range(10))
+    return 'enrolled_food/{userid}/{randomstring}{ext}'.format(userid=instance.user.id, basename=basefilename, randomstring=randomstr, ext=file_extension)
 
 
 class HowToUseFood(models.Model):
@@ -24,7 +31,7 @@ class HowToUseFood(models.Model):
 
 class Food(models.Model):
     name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to="enrolled_food", default="default.png")
+    photo = models.ImageField(upload_to=photo_path, default="default.png")
     expired_date = models.DateField(null=False)
     quantity = models.PositiveIntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
