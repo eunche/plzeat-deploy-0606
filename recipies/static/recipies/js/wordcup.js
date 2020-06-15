@@ -218,6 +218,7 @@ const addNewRecipe = (count) => {
             `
     );
   } else if (count == 6) {
+    final_pk = final_pk * 1;
     final_gijun.insertAdjacentHTML(
       "afterbegin",
       `<a href="/recipies/detail/${final_pk}/" style="display:flex; flex-direction:column; align-items:center; justify-contents:center;">
