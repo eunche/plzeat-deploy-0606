@@ -96,6 +96,18 @@ const deleteRecipe = () => {
   rightBox.childNodes[2].remove();
   rightBox.childNodes[3].remove();
 
+  if (count == 3) {
+    worldcup_title.innerHTML = `
+    레시피 월드컵 4강
+    `;
+  }
+
+  if (count == 5) {
+    worldcup_title.innerHTML = `
+    결승
+    `;
+  }
+
   if (count == 6) {
     final_box.remove();
     worldcup_title.remove();
@@ -209,7 +221,7 @@ const addNewRecipe = (count) => {
     final_gijun.insertAdjacentHTML(
       "afterbegin",
       `<a href="/recipies/detail/${final_pk}/" style="display:flex; flex-direction:column; align-items:center; justify-contents:center;">
-            <span style="font-size:4em;font-weight:bold;">우승!</span>
+            <span style="font-size:4em;font-weight:bold; margin-top:5px;">우승!</span>
             <h3>클릭해서 레시피를 확인하세요!</h3>
             <img style="width:250px; height:250px;"class="food_image" src="${final_url}" alt="recipe">
             <h1 class="food_name">${final_name}</h1>
