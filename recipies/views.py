@@ -134,7 +134,7 @@ def recipe_update(request, pk):
     infood_counts = recipe.foods.all().count()
     infoods = []
     for food in recipe.foods.all():
-        infoods.append(food.name)
+        infoods.append(food.name.replace('"', "").replace("'", ""))
     if request.method == 'POST':
         form = forms.RecipeCreateForm(
             request.POST, request.FILES, instance=recipe)
