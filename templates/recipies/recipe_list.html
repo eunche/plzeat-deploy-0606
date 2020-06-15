@@ -72,7 +72,6 @@
     list = list.replace("]", "");
     list = replaceAll(list, " ", "");
     list = list.split(',');
-    console.log(list);
     let count = 0;
     try {
         const page_number = {{ page_number }};
@@ -80,12 +79,10 @@
     count = (page_number - 1) * how_show;
     }
     catch (err) {
-        console.log(err);
     }
 
 
     for (const x of per) {
-        console.log(x)
         x.innerHTML = list[count] + "%보유";
         count += 1;
     }

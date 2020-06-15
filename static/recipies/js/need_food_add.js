@@ -2,7 +2,6 @@ const need_plus = document.querySelector(".jsNeedPlus");
 const copyed = document.querySelector(".jsNeed");
 const gijun = document.querySelector(".need_plus");
 const submit_btn = document.querySelector(".jsSubmit");
-console.log(submit_btn);
 
 const clickedPlusIcon = (event) => {
   event.preventDefault();
