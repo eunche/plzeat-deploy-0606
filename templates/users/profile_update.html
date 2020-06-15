@@ -105,7 +105,7 @@ Profile Update
 
 
 {% block content %}
-<form class="login_form" method="POST" enctype="multipart/form-data">
+<form style="margin: 0 1rem;" class="login_form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.none_field_errors %}
