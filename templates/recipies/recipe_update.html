@@ -321,6 +321,8 @@
     infoods = infoods.replace("[", "");
     infoods = infoods.replace("]", "");
     infoods = replaceAll(infoods, ";", "");
+    infoods = replaceAll(infoods, "'", "");
+    infoods = replaceAll(infoods, ";", "");
     infoods = replaceAll(infoods, "&#x27", "");
     infoods = replaceAll(infoods, " ", "");
     infoods = infoods.split(',');
