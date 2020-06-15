@@ -5,8 +5,17 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
+import os
+import random
 
 # Create your models here.
+
+
+def photo_path(instance, filename):
+    basefilename, file_extension = os.path.splitext(filename)
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+    randomstr = ''.join((random.choice(chars)) for x in range(10))
+    return 'avatar/{userid}/{randomstring}{ext}'.format(userid=instance.id, basename=basefilename, randomstring=randomstr, ext=file_extension)
 
 
 class User(AbstractUser):
@@ -25,7 +34,7 @@ class User(AbstractUser):
     )
     email_verified = models.BooleanField(default=True)
     avatar = models.ImageField(
-        upload_to="avatar", default="avatar_default.png")
+        upload_to=photo_path, default="avatar_default.png")
 
     def verify_email(self):
         if self.email_verified is False:
