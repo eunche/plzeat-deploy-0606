@@ -239,3 +239,10 @@ def recipe_worldcup(request):
         count = count + 1
 
     return render(request, 'recipies/recipe_worldcup.html', {"r0": r0, "r1": r1, "r2": r2, "r3": r3, "r4": r4, "r5": r5, "r6": r6, "r7": r7, })
+
+
+def recipe_delete(request, pk):
+    recipe = recipies_model.Recipe.objects.get(pk=pk)
+    recipe.delete()
+
+    return redirect(reverse("recipies:mylist", kwargs={'pk': request.user.pk}))
