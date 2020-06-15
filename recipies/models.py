@@ -3,6 +3,15 @@ from .my_crawling import gogogo
 from users import models as user_models
 from django.utils import timezone
 from django_random_queryset import RandomManager
+import os
+import random
+
+
+def photo_path(instance, filename):
+    basefilename, file_extension = os.path.splitext(filename)
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+    randomstr = ''.join((random.choice(chars)) for x in range(10))
+    return 'recipies/{randomstring}{ext}'.format(basename=basefilename, randomstring=randomstr, ext=file_extension)
 
 
 class Recipe(models.Model):
@@ -16,7 +25,7 @@ class Recipe(models.Model):
     )
 
     name = models.CharField(max_length=100, null=True)
-    photo = models.ImageField(upload_to="recipies", default="default.png")
+    photo = models.ImageField(upload_to=photo_path, default="default.png")
 
     how_to_create = models.TextField(max_length=10000, null=True)
     recipe_quantity = models.IntegerField(null=True)
