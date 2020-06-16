@@ -26,7 +26,7 @@ SECRET_KEY = 'rnv$dh2nnp4a(9couvk4ae=ozhrol+aj0$qp^5p5v@4f!-q(j#'
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                 'plzeat.eba-qcgfqhpc.ap-northeast-2.elasticbeanstalk.com']
+                 'plzeat.eba-z5f66ryb.ap-northeast-2.elasticbeanstalk.com']
 
 
 # Application definition
