@@ -1,4 +1,5 @@
 myvenv/
+venv
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
