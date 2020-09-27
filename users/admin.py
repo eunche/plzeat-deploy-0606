@@ -15,7 +15,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         (
             "Personal Info",
-            {"fields": ("username", "email", "nickname",
+            {"fields": ("avatar", "username", "email", "nickname",
                         "password", "login_method",)},
         ),
         ("About Email", {"fields": ("email_verified",)},),

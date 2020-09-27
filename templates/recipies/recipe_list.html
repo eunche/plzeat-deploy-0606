@@ -2,31 +2,56 @@
 {% load static %}
 
 {% block page_title %}
-'{{user}}'님을 위한 추천레시피
+추천레시피
 {% endblock page_title %}
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'recipies/css/recipe_list.css' %}" type="text/css">
+<style>
+    .star_img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .total_rating {
+        font-size: 0.7rem;
+
+    }
+
+    .text_test {
+        width: 100%;
+    }
+</style>
 {% endblock css %}
 
 {% block content %}
+
+{% if paged_recipes %}
 <div class="recipe_list">
     {% for recipe in paged_recipes %}
 
     <a href="{% url 'recipies:recipe_detail' recipe.pk %}">
         <div class="recipe_card">
-            <div class="card_hide">
-                <i class="fas fa-eye-slash"></i>
+            <div class="recipe_big_img">
+                <span class="recipe_per per{{forloop.counter0}}"></span>
+                <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
             </div>
-            <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
-            <div class="text_test">{{recipe.name}}</div>
+            <div class="text_test">
+                {{recipe.name}}
+                <img class="star_img" src="{% static 'recipies/img/star.png' %}" alt="">
+                <span class="total_rating">{{recipe.total_rating}}</span>
+            </div>
         </div>
 
     </a>
 
     {% endfor %}
 </div>
-
+{% else %}
+<div class="big_does_not_exist">
+    <span class="food_does_not_exist">추천 가능한 레시피가 없습니다</span>
+</div>
+{% endif %}
 
 {% include "partials/paginator.html" %}
 
@@ -34,5 +59,33 @@
 
 
 {% block script %}
+<script>
+    const per = document.querySelectorAll(".recipe_per");
 
+    function replaceAll(str, searchStr, replaceStr) {
+        return str.split(searchStr).join(replaceStr);
+    }
+
+
+    let list = "{{percent}}"
+    list = list.replace("[", "");
+    list = list.replace("]", "");
+    list = replaceAll(list, " ", "");
+    list = list.split(',');
+    let count = 0;
+    try {
+        const page_number = {{ page_number }};
+        const how_show = {{ how_show }};
+    count = (page_number - 1) * how_show;
+    }
+    catch (err) {
+    }
+
+
+    for (const x of per) {
+        x.innerHTML = list[count] + "%보유";
+        count += 1;
+    }
+
+</script>
 {% endblock script %}

@@ -1,0 +1,58 @@
+/* 컨텐츠 전체 박스 */
+.div_container {
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 실질적인 컨텐츠가 표시되는 박스 */
+.div_container_flex {
+  display: flex;
+
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* 음식 이미지와 이름을 둘러싸는 박스 */
+.food_content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* 음식 이미지 */
+.food_image {
+  width: 60%;
+  height: 60%;
+}
+
+/* 음식 이미지 위에 마우스를 올리면 커지게끔 */
+.food_content:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+/* 중앙에 있는 vs로고 이미지를 둘러싸는 박스 */
+.vs_img {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 6em;
+}
+
+/* 중앙에 있는 vs로고 이미지 */
+#vs_logo_img {
+  width: 25%;
+  height: auto;
+}

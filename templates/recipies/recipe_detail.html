@@ -15,6 +15,21 @@ Recommandation
 {% block content %}
 
 <div class="content_area">
+
+    {% if recipe.creator %}
+    <div class="creator_box">
+        <div class="creator_big">
+            <span>By </span><span class="creator"> {{recipe.creator.nickname}}</span>
+        </div>
+    </div>
+    {% endif %}
+    {% if recipe.creator == user %}
+    <div class="creator_box">
+        <a href="{% url 'recipies:update' recipe.pk %}"><i class="fas fa-pen-square recipe_update"></i></a>
+    </div>
+    {% endif %}
+
+
     <div class="food_img_area">
         <img class="recipe_img" src="{{recipe.photo.url}}" alt="recipe">
     </div>
@@ -43,11 +58,10 @@ Recommandation
                 <p class="level_text">{{recipe.recipe_level}}</p>
             </div>
         </div>
-
-        <p class="food_ingredient_title">| 들어가는 재료</p>
-        <ul>
-            {% for food in recipe.food.all %}
-            <li><i class="fas fa-check"></i>{{food.name}}</li>
+        <p class="food_ingredient_title">| 가지고있는 재료({{percent}}%)</p>
+        <ul class="check_food">
+            {% for food in result %}
+            <li>{{food}}</li>
             {% endfor %}
         </ul>
         <p class="recipe_detail_title">| 만드는 법</p>
@@ -55,7 +69,71 @@ Recommandation
             <p>{{recipe.how_to_create|linebreaks}}</p>
         </div>
     </div>
+    <p class="recipe_detail_title">| 추천 동영상 레시피</p>
+    <div class="reco_videos">
+        {% for link in recipe.links.all %}
+        {% if link.name == "비어있음" %}
+        {% else %}
+        <iframe src="https://www.youtube.com/embed/{{link}}" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="one_comment comment_big_box">
+        <div class="left_box" style="margin-top: 1rem;">
+            <img class="left_box__avatar" src="{{user.avatar.url}}" alt="">
+        </div>
+        <div class="right_box right_comment_form_box">
+            <form method='post'>
+                {% csrf_token %}
+
+                {% if form.none_field_errors %}
+                {% for error in none_field_errors  %}
+                <span class="field_error">{{error}}</span>
+                {% endfor %}
+                {% endif %}
+                {% for field in form  %}
+
+                {% if field.name == "rating" %}
+                <div>
+                    <span style="font-size: 0.9rem;"><strong>평점 : </strong></span>
+                    {{field}}
+                    <button
+                        style="background-color:#f0f0f0;border-radius: 8px; font-weight:bold; margin-left: 0.5rem; padding:0.2rem 0.3rem; font-size: 0.9rem; font-family: 'NanumSquare', sans-serif; ">작성</button>
+                </div>
+                {% else %}
+                {{field}}
+                {% endif %}
+
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+    <div class="recipe_comments">
+        {% for comment in recipe.comments.all reversed %}
+        <div class="one_comment">
+            <div class="left_box">
+                <img class="left_box__avatar" src="{{comment.user.avatar.url}}" alt="">
+            </div>
+            <div class="right_box">
+                <div class="right_box__user_rate_time">
+                    <strong><span class="right_box__user">{{comment.user.nickname}}</span></strong>
+                    <span class="right_box__rate"><img class="star_img" src="{% static 'recipies/img/star.png' %}"
+                            alt="">{{comment.get_rating_display}}</span>
+                    <span class="right_box__time">{{comment.time_turm}}</span>
+                </div>
+                <div class="right_box__body">
+                    {{comment.body}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+<a href=javascript:history.go(-1)>
+    <img class="back_img" src="{% static 'core/img/back_button.png' %}" alt="img">
+</a>
+
 
 {% endblock content %}
 

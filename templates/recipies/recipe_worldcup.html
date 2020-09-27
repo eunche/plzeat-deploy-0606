@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}
+Recipe Worldcup
+{% endblock page_title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'recipies/css/recipe_worldcup.css' %}" type="text/css">
+{% endblock css %}
+
+{% block content %}
+<div class="div_container">
+    <h1 class="worldcup_title" style="text-align: center;height:10vh;">레시피 월드컵 8강</h1>
+    <div style="height:60vh; display:flex;align-items:center; justify-content:center">
+        <div class="div_container_flex">
+            <div class="left_box"></div>
+            <div class="food_content jsLF">
+                <img class="food_image" src="{{r0.photo.url}}" alt="recipe">
+                <p class="food_name">{{r0.name}}</p>
+                <span class="jsLFPK" style="opacity: 0;">{{r0.pk}}</span>
+            </div>
+            <div class="food_content jsRF">
+                <img class="food_image" src="{{r1.photo.url}}" alt="recipe">
+                <p class="food_name">{{r1.name}}</p>
+                <span class="jsRFPK" style="opacity: 0;">{{r1.pk}}</span>
+            </div>
+            <div class="right_box"></div>
+            <div class="vs_img">
+                <img src="{% static 'core/img/vs_logo.png' %}" id="vs_logo_img">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    const r0_url = "{{r0.photo.url}}";
+    const r0_name = "{{r0.name}}";
+    const r0_pk = "{{r0.pk}}";
+    let r0_where = "";
+
+
+    const r1_url = "{{r1.photo.url}}";
+    const r1_name = "{{r1.name}}";
+    const r1_pk = "{{r1.pk}}";
+    let r1_where = "";
+
+    const r2_url = "{{r2.photo.url}}";
+    const r2_name = "{{r2.name}}";
+    const r2_pk = "{{r2.pk}}";
+    let r2_where = "";
+
+    const r3_url = "{{r3.photo.url}}";
+    const r3_name = "{{r3.name}}";
+    const r3_pk = "{{r3.pk}}"
+    let r3_where = ""
+
+    const r4_url = "{{r4.photo.url}}";
+    const r4_name = "{{r4.name}}";
+    const r4_pk = "{{r4.pk}}"
+    let r4_where = ""
+
+    const r5_url = "{{r5.photo.url}}";
+    const r5_name = "{{r5.name}}";
+    const r5_pk = "{{r5.pk}}"
+    let r5_where = ""
+
+    const r6_url = "{{r6.photo.url}}";
+    const r6_name = "{{r6.name}}";
+    const r6_pk = "{{r6.pk}}"
+    let r6_where = ""
+
+    const r7_url = "{{r7.photo.url}}";
+    const r7_name = "{{r7.name}}";
+    const r7_pk = "{{r7.pk}}"
+    let r7_where = ""
+
+
+
+    let rr0_url = "";
+    let rr0_name = "";
+    let rr0_pk = "";
+    let rr0_where = "";
+
+    let rr1_url = "";
+    let rr1_name = "";
+    let rr1_pk = "";
+    let rr1_where = "";
+
+    let rr2_url = "";
+    let rr2_name = "";
+    let rr2_pk = "";
+    let rr2_where = "";
+
+    let rr3_url = "";
+    let rr3_name = "";
+    let rr3_pk = "";
+    let rr3_where = "";
+
+
+
+    let rrr0_url = "";
+    let rrr0_name = "";
+    let rrr0_pk = "";
+    let rrr0_where = "";
+
+    let rrr1_url = "";
+    let rrr1_name = "";
+    let rrr1_pk = "";
+    let rrr1_where = "";
+
+    let final_url = "";
+    let final_name = "";
+    let final_pk = "";
+
+</script>
+<script src="{% static 'recipies/js/wordcup.js' %}"></script>
+{% endblock script %}
